@@ -1,0 +1,21 @@
+适合于JlinkV9 
+硬件HW 根据SN计算。
+如SN=20180904 则HW=SN/100000(取整)=201再除以10 取小数=20.10 则硬件HW为V9.10
+如SN=20280904 则HW=SN/100000(取整)=202再除以10 取小数=20.20 则硬件HW为V9.20
+如SN=20380904 则HW=SN/100000(取整)=203再除以10 取小数=20.30 则硬件HW为V9.30
+如SN=20480904 则HW=SN/100000(取整)=204再除以10 取小数=20.40 则硬件HW为V9.40
+如SN=20580904 则HW=SN/100000(取整)=205再除以10 取小数=20.50 则硬件HW为V9.50
+
+在JLINK的command下依次运行如下命令  
+
+Exec SetSN=XXXXXXXX      ;添加SN 
+Exec AddFeature GDB      ;添加GDB 
+Exec AddFeature RDI      ;添加RDI 
+Exec AddFeature FlashBP  ;添加FlashBP  
+Exec AddFeature FlashDL  ;添加FlashDL 
+Exec AddFeature JFlash   ;添加JFlash 
+Exec AddFeature RDDI     ;添加RDDI
+
+
+
+专属JLink-V9功能添加命令！
