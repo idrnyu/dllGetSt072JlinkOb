@@ -1,0 +1,36 @@
+072版本比f103的优势就是成本更低，而且带串口，支持swo。缺点就是swd只有2M。
+
+固件的提取和上面的103方式一样，我没找到 loaderboot ，处理方式见上面的帖子，很简单。
+
+值得注意的是072版本的固件和103版本的loaderboot大小不一样。所以真正固件的偏移地址也不一样，072的偏移地址是0x4800。
+
+还有一点要注意，前面的bootloader 没有一定要充填 0xFF，不然jlink的sn号可能会报错。
+
+072的偏移地址是0x4800   只需要把bootloader丢进去就可以
+
+103的偏移地址是0x4000  只需要把bootloader丢进去就可以
+--------------------- 
+作者：不起名 
+来源：CSDN 
+原文：https://blog.csdn.net/qq_39663845/article/details/89225694 
+https://blog.csdn.net/qq_39663845/article/details/81086499
+版权声明：本文为博主原创文章，转载请附上博文链接！
+
+
+可以通过hex2bin文件转换后看
+
+特征为 0x00 0x20 开始  往前推两个字节开始截取，  直到下一个固件的0xff 0xff  很多0xff时候结尾
+在自动升级的文件里面截取bootloader就可以了
+
+
+
+Connect pins on STM32F072C8 with next
+
+PA0 ----- 1K -----|<|---+ 3.3V   Activity LED
+PA1 ----- 100 om ----TARGET RESET
+PA2 ----- 100 om ---- TARGET SWCLK
+PA3 -------------------- TARGET SWO
+PA4 ----- 100 om ---- TARGET SWDIO
+
+PA9 ----- 100 om ---- (COM TX) TARGET RX
+PA10 --- 100 om ---- (COM RX) TARGET TX
